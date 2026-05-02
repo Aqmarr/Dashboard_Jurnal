@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <title>Dashboard Jurnal Farmasi</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <div class="container">
+            <h1>🔍 Dashboard Jurnal Farmasi</h1>
+
+            <div class="search-box">
+                <input type="text" id="keyword" placeholder="Cari jurnal farmasi...">
+                <button onclick="searchJurnal()">Cari</button>
+                <button onclick="clearInput()">❌</button>
+                <button onclick="showBookmark()">📚 Bookmark</button>
+            </div>
+
+            <div id="result"></div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>
