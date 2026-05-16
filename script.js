@@ -15,7 +15,7 @@ async function searchJurnal() {
     lastKeyword = keyword;
 
     let resultDiv = document.getElementById("result");
-    resultDiv.innerHTML = "<p style='color:white'>🔄 Sedang mencari jurnal...</p>";
+    resultDiv.innerHTML = "<p style='color:white'>🔄 Mencari jurnal...</p>";
 
     let allData = [];
 
@@ -61,7 +61,7 @@ async function searchJurnal() {
             let res = await fetch(semUrl);
             let data = await res.json();
 
-            return data.data.map(p => ({
+            return (data.data || []).map(p => ({
                 title: p.title,
                 year: p.year,
                 link: p.url,
@@ -83,7 +83,7 @@ async function searchJurnal() {
             let res = await fetch(doajUrl);
             let data = await res.json();
 
-            return data.results.map(item => {
+            return (data.results || []).map(item => {
                 let bib = item.bibjson;
                 return {
                     title: bib.title,
@@ -269,4 +269,84 @@ function deleteBookmark(link) {
     localStorage.setItem("bookmark", JSON.stringify(data));
 
     showBookmark();
+}
+
+// ======================
+// TULIP ANIMATION
+// ======================
+window.addEventListener("load", () => {
+
+    let container =
+        document.getElementById("tulip-container");
+
+    // buat tulip jatuh
+    for(let i = 0; i < 60; i++){
+
+        let tulip =
+            document.createElement("div");
+
+        tulip.classList.add("tulip");
+
+        // gambar tulip putih
+        tulip.innerHTML =
+            `<img src="tulip2.png" width="30">`;
+
+        tulip.style.left =
+            Math.random() * 100 + "vw";
+
+        tulip.style.animationDuration =
+            (Math.random() * 3 + 3) + "s";
+
+        tulip.style.opacity =
+            Math.random();
+
+        container.appendChild(tulip);
+    }
+
+    // setelah animasi selesai
+    setTimeout(() => {
+
+        container.innerHTML = "";
+
+        // tampilkan pesan
+        document
+            .getElementById("welcome-message")
+            .classList.remove("hidden");
+
+    }, 5000);
+
+});
+
+
+// ======================
+// CLOSE MESSAGE
+// ======================
+function closeMessage() {
+    document
+        .getElementById("welcome-message")
+        .classList.add("hidden");
+}
+
+function skipMessage() {
+    closeMessage();
+}
+
+// ======================
+// TAMPILKAN ISI PESAN
+// ======================
+function showRealMessage() {
+
+    // tampilkan pesan
+    document
+        .getElementById("secret-message")
+        .classList.remove("hidden");
+
+    // hilangkan tombol baca
+    document
+        .getElementById("message-buttons")
+        .innerHTML = `
+            <button onclick="closeMessage()">
+                ✨ Close
+            </button>
+        `;
 }

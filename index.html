@@ -2,24 +2,77 @@
 <html lang="id">
     <head>
         <meta charset="UTF-8">
-        <title>Dashboard Jurnal Farmasi</title>
+        <title>Pharmacy Literature</title>
         <link rel="stylesheet" href="style.css">
+        <link rel="icon" type="image/png" href="tulip2.png">
     </head>
     <body>
 
-        <div class="container">
-            <h1>🔍 Dashboard Jurnal Farmasi</h1>
+        <!-- Tulip animation -->
+        <div id="tulip-container"></div>
 
+        <!-- Pesan Khusus -->
+        <div id="welcome-message" class="hidden">
+            <div class="message-box">
+                <h2 class="popup-title">
+                    <img src="tulip2.png" alt="Tulip">
+                    Special Message
+                </h2>
+                
+                <!-- isi pesan disembunyikan dulu -->
+                <div id="secret-message" class="hidden">
+
+                    <p>
+                        Terima kasih telah menggunakan dashboard ini.
+                        Semoga sistem ini dapat membantu proses pencarian 
+                        jurnal dan pembelajaran dengan lebih mudah.
+                    </p>
+
+                </div>
+
+                <!-- tombol awal -->
+                <div id="message-buttons">
+
+                    <button onclick="showRealMessage()">
+                        📖 Read
+                    </button>
+
+                    <button onclick="skipMessage()">
+                        ⏭ Skip
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Container -->
+        <div class="container">
+
+            <h1>🔍 Pharmacy Literature</h1>
+
+            <!-- Search Box -->
             <div class="search-box">
-                <input type="text" id="keyword" placeholder="Cari jurnal farmasi...">
+                <input type="text" id="keyword" placeholder="Cari jurnal...">
                 <button onclick="searchJurnal()">Cari</button>
                 <button onclick="clearInput()">❌</button>
                 <button onclick="showBookmark()">📚 Bookmark</button>
             </div>
 
+            <!-- Hasil -->
             <div id="result"></div>
         </div>
 
+        <!-- Tulip Bawah -->
+        <div class="bottom-tulip">
+            <img src="tulip2.png" alt="Tulip">
+        </div>
+
+        <!-- Javascript -->
         <script src="script.js"></script>
+
+        
     </body>
 </html>

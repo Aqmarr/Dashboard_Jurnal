@@ -1,101 +1,369 @@
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
 
-body {
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
-    color: #333;
+/* BODY */
+body{
+    background:
+        linear-gradient(
+            135deg,
+            #0f172a,
+            #1e3c72,
+            #2a5298
+        );
+
+    min-height: 100vh;
+
+    color: white;
+
+    overflow-x: hidden;
 }
 
-.container {
+/* CONTAINER */
+.container{
     max-width: 900px;
+
     margin: auto;
+
     padding: 30px;
+
     text-align: center;
 }
 
-h1 {
+/* TITLE */
+h1{
     color: white;
+
     margin-bottom: 20px;
+
+    font-size: 40px;
 }
 
 /* SEARCH BOX */
-.search-box {
+.search-box{
     display: flex;
+
     justify-content: center;
+
+    flex-wrap: wrap;
+
     gap: 10px;
+
     margin-bottom: 25px;
 }
 
-input {
-    padding: 12px;
-    width: 300px;
-    border-radius: 25px;
+/* INPUT */
+input{
+    padding: 14px 18px;
+
+    width: 320px;
+
+    border-radius: 30px;
+
     border: none;
+
     outline: none;
+
+    font-size: 16px;
 }
 
-button {
-    padding: 12px 15px;
+/* BUTTON */
+button{
+    padding: 12px 18px;
+
     border: none;
+
     border-radius: 25px;
-    margin: 5px;
+
     background: white;
+
     cursor: pointer;
+
     transition: 0.3s;
+
+    font-weight: bold;
 }
 
-button:hover {
-    background: #ddd;
+button:hover{
+    transform: scale(1.05);
+
+    background: #e2e8f0;
 }
 
-/* RESULT GRID */
-#result {
+/* RESULT */
+#result{
     display: grid;
+
     grid-template-columns: 1fr;
+
     gap: 15px;
 }
 
 /* CARD */
-.card {
-    background: white;
+.card{
+    background: rgba(255,255,255,0.95);
+
+    color: #222;
+
     padding: 20px;
-    border-radius: 15px;
+
+    border-radius: 18px;
+
     text-align: left;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,0.25);
+
     transition: 0.3s;
 }
 
-.card:hover {
+.card:hover{
     transform: translateY(-5px);
 }
 
 /* BADGE */
-.badge {
+.badge{
     display: inline-block;
-    padding: 5px 10px;
-    border-radius: 10px;
+
+    padding: 6px 12px;
+
+    border-radius: 12px;
+
     font-size: 12px;
+
     margin-top: 5px;
+
     color: white;
 }
 
-.pubmed { background: #e74c3c; }
-.semantic { background: #27ae60; }
-.doaj { background: #8e44ad; }
+.pubmed{
+    background: #ef4444;
+}
+
+.semantic{
+    background: #22c55e;
+}
+
+.doaj{
+    background: #a855f7;
+}
 
 /* LINK */
-.card a {
+.card a{
     display: inline-block;
+
     margin-top: 10px;
-    color: #2a5298;
+
+    color: #2563eb;
+
     text-decoration: none;
+
     font-weight: bold;
 }
 
-.card a:hover {
+.card a:hover{
     text-decoration: underline;
+}
+
+/* ======================
+   LOGO
+====================== */
+.logo-tulip{
+    font-size: 70px;
+
+    text-align: center;
+
+    margin-top: 10px;
+
+    animation: floatTulip 3s ease-in-out infinite;
+}
+
+@keyframes floatTulip{
+    0%{
+        transform: translateY(0px);
+    }
+
+    50%{
+        transform: translateY(-8px);
+    }
+
+    100%{
+        transform: translateY(0px);
+    }
+}
+
+/* ======================
+   TULIP JATUH
+====================== */
+#tulip-container{
+    position: fixed;
+
+    width: 100%;
+
+    height: 100%;
+
+    overflow: hidden;
+
+    top: 0;
+    left: 0;
+
+    pointer-events: none;
+
+    z-index: 9999;
+}
+
+.tulip{
+    position: absolute;
+
+    top: -50px;
+
+    font-size: 30px;
+
+    animation: fall linear forwards;
+}
+
+@keyframes fall{
+    to{
+        transform:
+            translateY(110vh)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+}
+
+/* ======================
+   POPUP PESAN
+====================== */
+#welcome-message{
+    position: fixed;
+
+    width: 100%;
+
+    height: 100%;
+
+    background: rgba(0,0,0,0.8);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    z-index: 10000;
+
+    backdrop-filter: blur(6px);
+}
+
+.hidden{
+    display: none !important;
+}
+
+.message-box{
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.15),
+            rgba(255,255,255,0.08)
+        );
+
+    color: white;
+
+    padding: 35px;
+
+    border-radius: 25px;
+
+    width: 85%;
+
+    max-width: 420px;
+
+    text-align: center;
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,0.3);
+
+    border:
+        1px solid rgba(255,255,255,0.2);
+}
+
+.message-box h2{
+    margin-bottom: 15px;
+
+    font-size: 28px;
+}
+
+.popup-title {
+    display: flex;
+    
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+}
+
+.popup-title img {
+    width: 35px;
+
+    height: 35px;
+
+    object-fit: contain;
+}
+
+.message-box p{
+    line-height: 1.6;
+
+    margin-bottom: 20px;
+
+    color: #f1f5f9;
+}
+
+/* ======================
+   TULIP BAWAH
+====================== */
+.bottom-tulip{
+    text-align: center;
+
+    margin: 40px 0;
+}
+
+.bottom-tulip img{
+
+    width: 45px;
+
+    height: 45px;
+
+    object-fit: contain;
+
+    opacity: 0.9;
+
+    transition: 0.3s;
+}
+
+/* efek hover */
+.bottom-tulip img:hover{
+
+    transform: scale(1.1);
+
+    filter: drop-shadow(0 0 8px white);
+}
+
+/* RESPONSIVE */
+@media(max-width: 768px){
+
+    h1{
+        font-size: 30px;
+    }
+
+    input{
+        width: 100%;
+    }
+
+    .search-box{
+        flex-direction: column;
+        align-items: center;
+    }
 }
